@@ -1,0 +1,516 @@
+Plataforma para Teste de Expressões Regulares
+https://regex101.com/
+=========================================================
+
+=========================================================
+Exemplos de Expressões Regulares
+=========================================================
+
+01.Regex para capturar números de CPF (com formatação)
+
+\d{3}\.\d{3}\.\d{3}-\d{2}
+
+
+ou
+^\d{3}.?\d{3}.?\d{3}\-?\d{2}$
+Exemplo: 123.456.789-11
+
+
+02.Regex para capturar números de CPF (sem formatação)
+
+\d{11}
+
+
+Exemplo: CPF 12345678911
+
+
+03.Regex para capturar números de CNPJ (com formatação)
+
+\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}
+
+
+ou
+^(\d{2}.?\d{3}.?\d{3}\/?\d{4}\-?\d{2})$
+Exemplo: 12.345.678/0001-11
+
+
+04.Regex para capturar números de CNPJ (sem formatação)
+
+\d{14}
+
+
+Exemplo: 12345678000111
+
+
+
+05.Regex para capturar números de RG (com formatação)
+
+\d{1,}\.\d{3}\.\d{3}-\d
+
+
+Exemplo: 12.345.678-9
+
+
+
+06.Regex para capturar números de RG (sem formatação)
+
+\d{8,9}
+
+
+Exemplo: 123456789
+
+
+07.Regex para capturar números de CEP
+
+\d{5}-\d{3}
+
+
+ou
+(^\d{5})\-?(\d{3}$)
+Exemplo: 82540-000
+
+
+
+08.Regex para capturar números de celular (sem DDD)
+
+\d{5}-\d{4}
+
+
+ou
+(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))
+Exemplo: 99888-1234
+
+
+09.
+Regex para capturar números de celular (com DDD)
+
+\(\d{3}\)\s?\d{5}-\d{4}
+
+ou
+(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))
+
+Exemplo: (011) 99888-1234
+
+
+
+10.Regex para capturar números de tel fixo (sem DDD)
+
+\d{4}-\d{4}
+
+
+ou
+(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))
+Exemplo: 4436-1234
+
+
+11.Regex para capturar números de tel fixo (com DDD)
+
+\(\d{3}\)\s?\d{4}-\d{4}
+
+
+ou
+(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))
+Exemplo: (011) 4436-1234
+
+
+12.
+Regex para capturar número de cartão de crédito
+
+\d{4}\s?\d{4}\s?\d{4}\s?\d{4}
+
+
+Exemplo: 1234 1234 1234 1234 
+
+
+
+13.Regex para capturar número de passaporte
+
+[a-zA-Z]{2}\d{6}
+
+ou
+^[A-Z]{2}\d{6}$
+
+Exemplo: AA123456
+
+
+
+14.Regex para capturar número de Placa de Carro (padrão antigo)
+
+[a-zA-Z]{3}\d{4}
+
+ou
+^([a-zA-Z]{3}\d[a-jA-J]\d{2})|([a-zA-Z]{3}-\d{4})$
+
+Exemplo: ABC-1234
+
+
+
+15.Regex para capturar número de Placa de Carro (padrão Mercosul)
+
+[a-zA-Z]{3}\d[a-zA-Z]\d{2}
+
+
+ou
+^([a-zA-Z]{3}\d[a-jA-J]\d{2})|([a-zA-Z]{3}-\d{4})$
+Exemplo: ABC1A12
+
+
+
+16.Regex para capturar número de registro de carteira de motorista
+
+\d{11}
+ou
+
+
+((cnh.*[0-9]{11})|(CNH.*[0-9]{11})|(habilitação.*[0-9]{11})|(carteira.*[0-9]{11}))
+Exemplo: 12345678911
+
+
+
+17.Regex para capturar endereços de email
+
+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+
+
+ou
+[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+
+Exemplos: fulano@exemplo.com, fulano@gmail.com, fulano@orgao.gov.br
+
+
+
+Observe que a expressão regular pode não capturar todos os endereços de email possíveis,
+ uma vez que há muitas variações de formatação; além disso, essa expressão regular
+ pode capturar alguns endereços de email inválidos ou inexistentes; portanto, recomenda-se fazer SEMPRE uma validação adicional dos endereços capturados por meio de outras
+ técnicas de programação.
+
+
+
+18.Regex para capturar URLs
+
+\bhttp?:\/\/[^\s]+\b
+
+
+ou
+\bhttps?:\/\/[^\s]+\b
+
+
+ou
+http?:\/\/(www\.)?[^\/]*?\/?([^$]*?$)?
+ou
+https?:\/\/(www\.)?[^\/]*?\/?([^$]*?$)?
+
+Exemplos: https://www.google.com, http://example.com, https://www.github.com/ 
+
+Essa expressão regular deve capturar a maioria das URLs comuns, incluindo aquelas
+ com parâmetros, tais como "http://www.exemplo.com/pagina.html?param1=valor1&param2=valor2"; no entanto, a expressão pode não capturar algumas URLs menos comuns ou que utilizem caracteres especiais; observe que essa expressão não captura URLs que não utilizem o protocolo http ou https.
+
+
+
+19.Regex para capturar Agências e Contas Bancárias
+
+\d{3,5}-?\d{0,2}
+Exemplo: 12345-6
+
+
+
+Observe que essa expressão regular pode não capturar todas as possíveis variações de
+ números de conta bancária no Brasil; alguns bancos e tipos de conta podem utilizar 
+formatos diferentes; portanto, é sempre recomendado verificar as regras específicas 
+de um determinado banco e testar a expressão regular com exemplos reais de números de 
+conta, para garantir que ela esteja capturando corretamente os dados desejados.
+
+
+
+20.
+Regex para capturar Endereços de IP
+v4
+^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$
+
+
+ou
+[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}
+
+Exemplos: 192.168.0.1, 10.0.0.1, 172.16.0.1
+
+
+21.
+Regex para capturar Endereços de IP
+v6
+(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
+
+
+22.Regex para capturar Endereços MAC
+
+[0-9A-Fa-f]{2}([:-])[0-9A-Fa-f]{2}\1[0-9A-Fa-f]{2}\1[0-9A-Fa-f]{2}\1[0-9A-Fa-f]{2}\1[0-9A-Fa-f]{2}
+ou
+
+
+(?:[0-9A-Fa-f]{2}[:-]){5}(?:[0-9A-Fa-f]{2})
+
+Exemplos: 00:11:22:33:44:55, 00-11-22-33-44-55
+
+
+
+23.Regex para capturar horários
+
+([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?
+
+
+Exemplos: 09:30, 12:45:30, 23:59
+
+
+
+24.Regex para capturar nomes de arquivos
+
+[\w\d\-_]+\.[\w\d]+
+
+
+Exemplos: file.pdf, file.docx, file.xls
+
+
+
+
+25.Regex para capturar cifras (sem R$ na frente)
+
+^\d{1,3}(.\d{3})*,\d{2}$
+
+
+Exemplos: 0,01; 0,10; 1,00; 10,00; 100,00; 1.000,00
+
+
+
+26.Regex para capturar datas 
+
+\d{2}\/\d{2}\/\d{4}
+
+
+ou
+(0[1-9]|1[0-9]|2[0-9]|3[0-1])[- | \/](0[1-9]|1[0-2])[- | \/]([0-9]{4})
+Exemplos: 01/01/2000; 16/09/2015
+
+
+
+27.Regex para capturar Números de PIS (Programa de Integração Social) do Brasil
+^\d{3}\.\d{5}\.\d{2}-\d{1}$
+
+
+Exemplo: 123.45678.90-1
+
+28.Regex para capturar latitude e longitude
+(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))
+
+29.Regex para capturar UUID
+(^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-4[a-fA-F0-9]{3}-[8|9|aA|bB][a-fA-F0-9]{3}-[a-fA-F0-9]{12}$)
+
+30.Regex para capturar número de endereço (números ou "S/N", "s/n", "S/n", "s/N")
+^(?:s\/n|S\/n|S\/N|s\/N)|^(\d)*$
+
+31.Regex para capturar hora no formato 24h
+([01][0-9]|[2][0-3]):([0-5][0-9])
+
+32.Regex para capturar hora no formato 12h
+((0?[1-9]|1[0-2]):([0-5][0-9].?([a].?[m].?|[p].?[m].?)?))
+
+33.Regex para capturar senha (8-20 dígitos, letras maiúsculas, minúsculas, números e caracteres especiais)
+^(?=.*[A-Z])(?=.*[a-z])(?=.*[\d])(?=.*[@#$%&*!-+&*]).{8,20}$
+
+34.Regex para capturar endereço de carteira de Bitcoin
+^(bc1|[13])[a-zA-HJ-NP-Z0-9]{25,39}$
+
+35.Regex para capturar Inscrição Estadual (IE)
+Número de inscrição dado às empresas pelo SEFAZ (Secretária da Fazenda) de cada UF brasileira; o comprimento pode variar de 8 a 13 dígitos, dependendo da UF; a RegEx corresponde ao formato utilizado no estado de São Paulo.
+^\d{3}.?\d{3}.?\d{3}.?\d{3}$
+
+36.Regex para capturar Siglas das UF do Brasil
+(AC|AL|AP|AM|BA|CE|DF|ES|GO|MA|MT|MS|MG|PA|PB|PR|PE|PI|RJ|RN|RS|RO|RR|SC|SP|SE|TO|BR)
+
+37.Regex para capturar Chave PIX Aleatória
+([a-z\d]{8})\-([a-z\d]{4})\-([a-z\d]{4})\-([a-z\d]{4})\-([a-z\d]{12})
+
+38.Regex para capturar CRM - Conselho Federal de Medicina
+([0-9-\/]{5,11})(?i)[a-z]{2}
+
+39.Regex para capturar Boleto Bancário e Linha Digitável
+(\d{5}[\.]\d{5}[\s]\d{5}[\.]\d{6}[\s]\d{5}[\.]\d{6}[\s]\d[\s]\d{14})|(\d{47,48})|(\d{12} \d{12} \d{12} \d{12})
+
+40.Regex para capturar RENAVAM - Registro Nacional de Veículos Automotores
+((\d{4})[.](\d{6})-(\d{1})|(\d{4})(\d{6})(\d{1}))
+
+41.Regex para capturar RNE - Registro Nacional de Estrangeiro
+(RNE)([A-Z\d])(\d{6})([A-Z\d])
+
+=========================================================
+Regex Especiais
+=========================================================
+
+42.Regex para capturar CPF por Localidade
+
+Rio Grande do Sul
+Dígito 0
+Ex: 999.999.990-99
+^\d{3}.?\d{3}.?\d{2}[0]{1}\-?\d{2}$
+
+Distrito Federal, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins
+Dígito 1
+Ex: 000.000.001-00
+^\d{3}.?\d{3}.?\d{2}[1]{1}\-?\d{2}$
+
+Amazonas, Pará, Roraima, Amapá, Acre e Rondônia
+Dígito 2
+Ex: 000.000.002-00
+^\d{3}.?\d{3}.?\d{2}[2]{1}\-?\d{2}$
+
+Ceará, Maranhão e Piauí
+Dígito 3
+Ex: 000.000.003-00
+^\d{3}.?\d{3}.?\d{2}[3]{1}\-?\d{2}$
+
+Paraíba, Pernambuco, Alagoas e Rio Grande do Norte
+Dígito 4
+Ex: 000.000.004-00
+^\d{3}.?\d{3}.?\d{2}[4]{1}\-?\d{2}$
+
+Bahia e Sergipe
+Dígito 5
+Ex: 000.000.005-00
+
+^\d{3}.?\d{3}.?\d{2}[5]{1}\-?\d{2}$
+Minas Gerais
+Dígito 6
+Ex: 000.000.006-00
+^\d{3}.?\d{3}.?\d{2}[6]{1}\-?\d{2}$
+
+Rio de Janeiro e Espírito Santo
+Dígito 7
+Ex: 000.000.007-00
+^\d{3}.?\d{3}.?\d{2}[7]{1}\-?\d{2}$
+
+São Paulo
+Dígito 8
+Ex: 000.000.008-00
+^\d{3}.?\d{3}.?\d{2}[8]{1}\-?\d{2}$
+
+Paraná e Santa Catarina
+Dígito 9
+Ex: 000.000.009-00
+^\d{3}.?\d{3}.?\d{2}[9]{1}\-?\d{2}$
+
+43.Regex para capturar CEP por Localidade
+
+43.1.Região Centro-Oeste
+
+Distrito Federal
+70000-000 a 72799-999 e 73000-000 a 73699-999
+(7([0-2][0-7]|3[0-6])\d{2}-\d{3})
+
+Goiás
+72800-000 a 72999-999 e 73700-000 a 76799-999
+(7(2[8-9]|[3-6]7)\d{2}-\d{3})
+
+Mato Grosso do Sul
+79000-000 a 79999-999
+(79\d{3}-\d{3})
+
+Mato Grosso
+78000-000 a 78899-999
+(78[0-8]\d{2}-\d{3})
+
+43.2.Região Nordeste
+
+Alagoas
+57000-000 a 57999-999
+(57\d{3}-\d{3})
+
+Bahia
+40000-000 a 48999-999
+(4[0-8]\d{3}-\d{3})
+
+Ceará
+60000-000 a 63999-999
+(6[0-3]\d{3}-\d{3})
+
+Maranhão
+65000-000 a 65999-999
+(65\d{3}-\d{3})
+
+Paraíba
+58000-000 a 58999-999
+(58\d{3}-\d{3})
+
+Pernambuco
+50000-000 a 56999-999
+(5[0-6]\d{3}-\d{3})
+
+Piauí
+64000-000 a 64999-999
+(64\d{3}-\d{3})
+
+Rio Grande do Norte
+59000-000 a 59999-999
+(59\d{3}-\d{3})
+
+Sergipe
+49000-000 a 49999-999
+(49\d{3}-\d{3})
+
+43.3.Região Norte
+
+Acre
+69900-000 a 69999-999
+(699\d{2}-\d{3})
+
+Amapá
+68900-000 a 68999-999
+(689\d{2}-\d{3})
+
+Amazonas
+69000-000 a 69299-999 e 69400-000 a 69899-999
+(69([0-2]|[4-8])\d{2}-\d{3})
+
+Pará
+66000-000 a 68899-999
+(6[6-8][0-8]\d{2}-\d{3})
+
+Rondônia
+76800-000 a 76999-999
+(76[8-9]\d{2}-\d{3})
+
+Roraima
+69300-000 a 69399-999
+(693\d{2}-\d{3})
+
+Tocantins
+77000-000 a 77999-999
+(77\d{3}-\d{3})
+
+43.4.Região Sudeste
+
+Espírito Santo
+29000-000 a 29999-999
+(29\d{3}-\d{3})
+
+Minas Gerais
+30000-000 a 39999-999
+(3\d{4}-\d{3})
+
+Rio de Janeiro
+20000-000 a 28999-999
+(2[0-8]\d{3}-\d{3})
+
+São Paulo
+01000-000 a 19999-999
+([0-1][1-9]\d{3}-\d{3})
+
+43.5.Região Sul
+
+Paraná
+80000-000 a 87999-999
+(8[0-7]\d{3}-\d{3})
+
+Rio Grande do Sul
+90000-000 a 99999-999
+(9\d{4}-\d{3})
+
+Santa Catarina
+88000-000 a 89999-999
+(8[8-9]\d{3}-\d{3})
